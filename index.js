@@ -6,6 +6,9 @@ const app = express();
 
 for (let i = 0; i < PATHS.length; i++) {
 	app.get("/" + URIS[i], (req, res) => {
+		const ip = req.header("x-forwarded-for") || req.connection.remoteAddress;
+
+		console.log("Sending " + URIS[i] + " to IP: " + ip);
 		res.download(PATHS[i]);
 	});
 }
