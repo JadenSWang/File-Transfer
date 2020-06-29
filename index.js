@@ -1,9 +1,15 @@
-import { TODOLIST_APP_PATH } from "paths.js";
+const PATHS = require("./paths.js");
+const URIS = require("./uris.js");
 
-const http = require("http");
-const fileSystem = require("fs");
-const path = require("path");
+const express = require("express");
+const app = express();
 
-http.createServer(function (request, response) {
-	console.log(request);
-}).listen(80);
+for (let i = 0; i < PATHS.length; i++) {
+	app.get("/" + URIS[i], (req, res) => {
+		res.download(PATHS[i]);
+	});
+}
+
+app.listen(8000, () => {
+	console.log("Example app listening on port 8000!");
+});
