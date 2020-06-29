@@ -10,6 +10,7 @@ for (let i = 0; i < PATHS.length; i++) {
 	});
 }
 
-app.listen(8000, () => {
-	console.log("Example app listening on port 8000!");
+const port = 8000;
+app.listen(port, () => {
+	console.log("Example app listening on port " + port + "!");
 });
